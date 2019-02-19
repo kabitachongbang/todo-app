@@ -33,28 +33,41 @@
     <link rel="stylesheet" href="assets/styles/style.css" />
   </head>
   <body>
-    <div class="container">
+    <div class="container ">
       <div class="row">
-        <div class="col-md-6">
-          <div class="todolist not-done">
-            <h1>things to do</h1>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="what you want to do..."
-            />
-            <button type="submit" class="btn btn-primary">Add</button>
+        <div class="col-md-6 col-sm-12 ">
+          <div class="todolist">
+            <h1 class="text-danger text-center ">
+              things to do
+            </h1>
+            <div class="d-flex  ">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="what you want to do..."
+              />
+              <span>
+                <button type="submit" class="btn btn-primary">
+                  Add
+                </button></span
+              >
+            </div>
+
             <br />
-            <hr />
+            <hr class="clearfix w-100 d-md-none pb-3" />
             <button id="checkAll" class="btn btn-success">
               Mark all as completed
             </button>
             <br />
             <br />
-            <ul class="list-group">
-              <li class="list-group-item">
-                <input type="checkbox" value="" class="form-check-input" />Take
-                out trash
+            <ul class="list-group  list-unstyled">
+              <li class="list-group-item ">
+                    <label for="firstToDo">
+                  <input type="checkbox"  name="firstToDo" checked />
+            
+                  </label>
+                  Take out trash</label
+                >
 
                 <div class="d-flex justify-content-end  ">
                   <div><button>edit</button></div>
@@ -62,16 +75,19 @@
                 </div>
               </li>
               <li class="list-group-item">
-                <input class="form-check-input" type="checkbox" value="" />Play
-                song
+                <label for="secondToDo">
+                  <input type="checkbox" name="secondToDo" />Play song</label
+                >
+
                 <div class="d-flex justify-content-end">
                   <div><button>edit</button></div>
                   <div><button>&times;</button></div>
                 </div>
               </li>
               <li class="list-group-item">
-                <input class="form-check-input" value="" type="checkbox" />Cook
-                food
+                <label for="thirdToDo">
+                  <input value="thirdToDo" type="checkbox" />Cook food</label
+                >
                 <div class="d-flex justify-content-end">
                   <div><button>edit</button></div>
                   <div><button>&times;</button></div>
@@ -80,15 +96,79 @@
             </ul>
           </div>
           <br />
-          <div class="todolist done">
-            <ul class="list-group">
-              <li class="list-group-item"><input type="checkbox" />bathed</li>
-              <li class="list-group-item">played in snow</li>
-              <li class="list-group-item">watched bollywood movie</li>
+        </div>
+
+        <div class="col-md-6 col-sm-12">
+          <div class="todolist_done">
+            <h1 class="text-success text-center">completed</h1>
+            <ul class="list-group list-unstyled">
+              <li class="list-group-item">
+                <label for="userBath"
+                  ><input type="checkbox" name="userBath" /> Bathed</label
+                >
+
+                <div class="d-flex justify-content-end">
+                  <button>&times;</button>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <label for="userPlay">
+                  <input type="checkbox" name="userPlay" />Played in snow</label
+                >
+                <div class="d-flex justify-content-end">
+                  <button>&times;</button>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <label for="userWatch">
+                  <input type="checkbox" name="userWatch" />Watched bollywood
+                  movie</label
+                >
+                <div class="d-flex justify-content-end">
+                  <button>&times;</button>
+                </div>
+              </li>
             </ul>
           </div>
         </div>
       </div>
+      <!-- Footer -->
+      <footer class="fixed-footer ">
+        <div class="container text-center font-weight-normal text-md-left ">
+          <div class="row">
+            <div class="col-md-6 mt-md-3 mt-3">
+              <h5 class="text-uppercase">Footer content</h5>
+              <p >Here you can type as you like.</p>
+            </div>
+            <hr class="clearfix w-100 d-md-none pb-3" />
+
+            <div class="col-md-3 mb-md-0  mt-md-3 mb-3">
+              <h5 class="text-uppercase">Links</h5>
+              <ul class="list-unstyled">
+                <li><a href="#"> Link1</a></li>
+                <li><a href="#">Link2</a></li>
+                <li><a href="#">Link3</a></li>
+              </ul>
+            </div>
+            <div class="col-md-3 mb-md-0 mt-md-3 mb-3">
+              <h5 class="text-uppercase">links</h5>
+              <ul class="list-unstyled">
+                <li><a href="#">Link1</a></li>
+                <li><a href="#">Link2</a></li>
+                <li><a href="#">Link3</a></li>
+                <li><a href="#">Link4</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-copyright ">
+          <div class="col-12  text-white  text-center ">
+            © 2019 Copyright:
+            <a href="#">KCBootstrap.com</a>
+          </div>
+        </div>
+      </footer>
+      <!-- Footer -->
     </div>
   </body>
 </html>
