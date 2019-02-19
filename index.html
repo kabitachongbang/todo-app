@@ -1,174 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
 
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="assets/styles/style.css" />
-  </head>
-  <body>
-    <div class="container ">s
-      <div class="row">
-        <div class="col-md-6 col-sm-12 ">
-          <div class="todolist">
-            <h1 class="text-danger text-center ">
-              things to do
-            </h1>
-            <div class="d-flex  ">
-              <input
-                type="text"
-                class="form-control"
-                placeholder="what you want to do..."
-              />
-              <span>
-                <button type="submit" class="btn btn-primary">
-                  Add
-                </button></span
-              >
-            </div>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous" />
 
-            <br />
-            <hr class="clearfix w-100 d-md-none pb-3" />
-            <button id="checkAll" class="btn btn-success">
-              Mark all as completed
-            </button>
-            <br />
-            <br />
-            <ul class="list-group  list-unstyled">
-              <li class="list-group-item ">
-                    <label for="firstToDo">
-                  <input type="checkbox"  name="firstToDo" checked />
-            
-                  </label>
-                  Take out trash</label
-                >
+  <link rel="stylesheet" href="assets/styles/style.css" />
+</head>
 
-                <div class="d-flex justify-content-end  ">
-                  <div><button>edit</button></div>
-                  <div><button>&times;</button></div>
-                </div>
-              </li>
-              <li class="list-group-item">
-                <label for="secondToDo">
-                  <input type="checkbox" name="secondToDo" />Play song</label
-                >
+<body>
+  <div class="container ">
+    <h1 class=" text-center ">
+      things to do
+    </h1>
 
-                <div class="d-flex justify-content-end">
-                  <div><button>edit</button></div>
-                  <div><button>&times;</button></div>
-                </div>
-              </li>
-              <li class="list-group-item">
-                <label for="thirdToDo">
-                  <input value="thirdToDo" type="checkbox" />Cook food</label
-                >
-                <div class="d-flex justify-content-end">
-                  <div><button>edit</button></div>
-                  <div><button>&times;</button></div>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <br />
-        </div>
+    <div class="input-group" id='needs-validation' nonvalidate>
 
-        <div class="col-md-6 col-sm-12">
-          <div class="todolist_done">
-            <h1 class="text-success text-center">completed</h1>
-            <ul class="list-group list-unstyled">
-              <li class="list-group-item">
-                <label for="userBath"
-                  ><input type="checkbox" name="userBath" /> Bathed</label
-                >
+      <input type="text" name='entry' class="form-control is-valid width=100" required placeholder="what you want to do..." />
+      <div class='invalid-feedback'>Plese enter todo item</div>
 
-                <div class="d-flex justify-content-end">
-                  <button>&times;</button>
-                </div>
-              </li>
-              <li class="list-group-item">
-                <label for="userPlay">
-                  <input type="checkbox" name="userPlay" />Played in snow</label
-                >
-                <div class="d-flex justify-content-end">
-                  <button>&times;</button>
-                </div>
-              </li>
-              <li class="list-group-item">
-                <label for="userWatch">
-                  <input type="checkbox" name="userWatch" />Watched bollywood
-                  movie</label
-                >
-                <div class="d-flex justify-content-end">
-                  <button>&times;</button>
-                </div>
-              </li>
-            </ul>
-          </div>
+
+
+      <span class='input-group-btn'>
+        <button type="submit" class="btn btn-primary">
+          Add
+        </button></span>
+
+    </div>
+
+    <br />
+
+    <br>
+    <div class="row">
+      <div class="col-md-6 col-sm-12 ">
+        <div class="todolist">
+          <br>
+          <button id="checkAll" class="btn btn-success">
+            Mark all as completed
+          </button><br>
+          <br>
+          <ul class="list-group  list-unstyled">
+            <li class="list-group-item ">
+              <label for="firstToDo">
+                <input type="checkbox" name="firstToDo" checked /> Take out trash</label>
+              <span class="btn-group  float-right" role='group'>
+                <button type='button' class="btn btn-secondary">edit</button>
+                <button type='button' class="btn btn-secondary">&times;</button>
+              </span>
+            </li>
+            <li class="list-group-item">
+              <label for="secondToDo">
+                <input type="checkbox" name="secondToDo" /> Play song</label>
+              <span class="btn-group float-right" role='group'>
+                <button type='button' class='btn btn-secondary'>edit</button>
+                <button type='button' class='btn btn-secondary'>&times;</button>
+              </span>
+            </li>
+            <li class="list-group-item">
+              <label for="thirdToDo">
+                <input value="thirdToDo" type="checkbox" /> Cook food</label>
+              <span class="btn-group float-right" role='group'>
+                <button type="button" class='btn btn-secondary'>edit</button>
+                <button type='button' class='btn btn-secondary'>&times;</button>
+              </span>
+            </li>
+          </ul>
         </div>
       </div>
-      <!-- Footer -->
-      <footer class="fixed-footer ">
-        <div class="container text-center font-weight-normal text-md-left ">
-          <div class="row">
-            <div class="col-md-6 mt-md-3 mt-3">
-              <h5 class="text-uppercase">Footer content</h5>
-              <p >Here you can type as you like.</p>
-            </div>
-            <hr class="clearfix w-100 d-md-none pb-3" />
-
-            <div class="col-md-3 mb-md-0  mt-md-3 mb-3">
-              <h5 class="text-uppercase">Links</h5>
-              <ul class="list-unstyled">
-                <li><a href="#"> Link1</a></li>
-                <li><a href="#">Link2</a></li>
-                <li><a href="#">Link3</a></li>
-              </ul>
-            </div>
-            <div class="col-md-3 mb-md-0 mt-md-3 mb-3">
-              <h5 class="text-uppercase">links</h5>
-              <ul class="list-unstyled">
-                <li><a href="#">Link1</a></li>
-                <li><a href="#">Link2</a></li>
-                <li><a href="#">Link3</a></li>
-                <li><a href="#">Link4</a></li>
-              </ul>
-            </div>
-          </div>
+      <br />
+      <div class="col-md-6 col-sm-12">
+        <div class="todolist_done">
+          <br>
+          <button class='btn bg-muted'>clear all completed</button><br><br>
+          <ul class="list-group list-unstyled">
+            <li class="list-group-item">
+              <label for="userBath"><input type="checkbox" name="userBath" /> Bathed</label>
+              <span class="float-right">
+                <button class='btn btn-secondary'>&times;</button>
+              </span>
+            </li>
+            <li class="list-group-item">
+              <label for="userPlay">
+                <input type="checkbox" name="userPlay" /> Played in
+                snow</label>
+              <span class="float-right">
+                <button class='btn btn-secondary'>&times;</button>
+              </span>
+            </li>
+            <li class="list-group-item">
+              <label for="userWatch">
+                <input type="checkbox" name="userWatch" /> Watched bollywood
+                movie</label>
+              <span class="float-right">
+                <button class='btn btn-secondary'>&times;</button>
+              </span>
+            </li>
+          </ul>
         </div>
-        <div class="footer-copyright ">
-          <div class="col-12  text-white  text-center ">
-            © 2019 Copyright:
-            <a href="#">KCBootstrap.com</a>
-          </div>
-        </div>
-      </footer>
-      <!-- Footer -->
+      </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
