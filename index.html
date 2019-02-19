@@ -20,26 +20,17 @@
 
 <body>
   <div class="container ">
-    <h1 class=" text-center ">
+    <h1 class=" text-center">
       things to do
     </h1>
-
-    <div class="input-group" id='needs-validation' nonvalidate>
-
-      <input type="text" name='entry' class="form-control is-valid width=100" required placeholder="what you want to do..." />
-      <div class='invalid-feedback'>Plese enter todo item</div>
-
-
-
+    <div class="input-group">
+      <input type="text" name='entry' class="form-control width=100" placeholder="what you want to do..." />
       <span class='input-group-btn'>
         <button type="submit" class="btn btn-primary">
           Add
         </button></span>
-
     </div>
-
     <br />
-
     <br>
     <div class="row">
       <div class="col-md-6 col-sm-12 ">
@@ -84,23 +75,23 @@
           <button class='btn bg-muted'>clear all completed</button><br><br>
           <ul class="list-group list-unstyled">
             <li class="list-group-item">
-              <label for="userBath"><input type="checkbox" name="userBath" /> Bathed</label>
+              <label for="userBath"><input type="checkbox" name="userBath" /><s> Bathed</s></label>
               <span class="float-right">
                 <button class='btn btn-secondary'>&times;</button>
               </span>
             </li>
             <li class="list-group-item">
               <label for="userPlay">
-                <input type="checkbox" name="userPlay" /> Played in
-                snow</label>
+                <input type="checkbox" name="userPlay" /><s> Played in
+                  snow </s></label>
               <span class="float-right">
                 <button class='btn btn-secondary'>&times;</button>
               </span>
             </li>
             <li class="list-group-item">
               <label for="userWatch">
-                <input type="checkbox" name="userWatch" /> Watched bollywood
-                movie</label>
+                <input type="checkbox" name="userWatch" /><s> Watched bollywood
+                  movie</s></label>
               <span class="float-right">
                 <button class='btn btn-secondary'>&times;</button>
               </span>
