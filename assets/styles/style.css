@@ -1,24 +1,9 @@
-.fixed-footer {
-  margin-bottom: 0;
-  margin-top: 150px;
-}
-.fixed-footer > .container > .row {
-  background-color: #3f95e2;
-}
-.fixed-footer > .footer-copyright {
-  background-color: #196bb5;
-}
+
 .todolist > .list-group > .list-group-item {
-  background-color: #f4dade;
-  font-size: 1.6rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .todolist_done > .list-group > .list-group-item {
-  background-color: #c2f3d7;
-  font-size: 1.5rem;
+  background-color: #e8f4e6;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-h5,
-p,
-a {
-  color: white;
-}
+
