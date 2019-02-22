@@ -1,55 +1,60 @@
 var app = angular.module('todo', []);
-app.controller('TodoController', ['$scope', 'todoFactory', function ($scope, todoFactory) {
+app.controller('TodoController', ['$scope', function ($scope) {
+    $scope.todos = [];
+    $scope.todoItem = {
+        content: ''
+    };
+    let indexUpdate = 0;
 
-    // $scope.todos = [];
-    // $scope.addTodoItem = function () {
-    //     todoFactory.addItem($scope.todoItem);
-    //     $scope.todos = todoFactory.getTodos();
+    $scope.addTodoItem = function () {
+        console.log($scope.todoItem);
+
+        if ($scope.todoItem.id === undefined) {
+
+            let todo = {
+                id: $scope.todos.length,
+                content: $scope.todoItem.content,
+                isComplete: false
+            };
+
+            $scope.todos.push(todo);
+        } else {
+            $scope.todos[indexUpdate].content = $scope.todoItem.content;
+
+        }
+        $scope.todoItem = {};
+
+    };
+    $scope.removeTodoItem = function (index) {
+        $scope.todos.splice(index, 1);
+    };
+    $scope.editTodoItem = function (index) {
+
+        $scope.todoItem = $scope.todos[index];
+        indexUpdate = index;
+    };
+    $scope.checkTodo = function (index) {
+        if ($scope.todos[index].isComplete === true) {
+            $scope.todos[index].isComplete = false;
+            console.log($scope.todos[index].isComplete);
+        } else {
+            $scope.todos[index].isComplete = true;
+            console.log($scope.todos[index].isComplete);
+        }
+    };
+    $scope.checkAll = function () {
+        for (let count = 0; count < $scope.todos.length; count++) {
 
 
-    //     $scope.todoItem = '';
-    // };
-    // $scope.removeTodoItem = function (index) {
-    //     todoFactory.removeItem(index);
-    // };
-    // $scope.updateTodoItem = function (index) {
-    //     todoFactory.updateItem($scope.todoItem, index)
-    //     $scope.todoItem = todoFactory.gettodo(r);
-    // };
-    console.log(todoFactory);
+            $scope.todos[count].isComplete = true;
 
-    console.log(todoFactory.getTodos());
-    todoFactory.addTodo('sleep');
-    todoFactory.addTodo('eat');
-    todoFactory.addTodo('bath');
-    todoFactory.addTodo('add');
-    console.log(todoFactory.getTodos());
+        };
+    };
 
-    console.log(todoFactory.getTodos());
-    todoFactory.updateTodo('run', 2);
-    console.log(todoFactory.getTodos());
-    console.log(todoFactory.getTodo(1));
+    $scope.clearAll = function () {
+        $scope.todos = [];
+    };
+
 }]);
 
-app.factory('todoFactory', function () {
-    let todos = [];
 
-    let serviceObj = {
-        addTodo: function (todo) {
-            todos.push(todo);
-        },
-        getTodos: function () {
-            return todos;
-        },
-        getTodo: function (index) {
-            return todos[index];
-        },
-        deleteTodo: function (index) {
-            todos.splice(index, 1);
-        },
-        updateTodo: function (newTodo, oldTodoIndex) {
-            todos[oldTodoIndex] = newTodo;
-
-        },
-    }; return serviceObj;
-});

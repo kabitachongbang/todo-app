@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
@@ -18,89 +19,53 @@
   <link rel="stylesheet" href="assets/styles/style.css" />
 </head>
 
-<body>
-  <div class="container ">
-    <h1 class=" text-center">
+<body ng-app='todo'>
+  <div class="container " ng-controller='TodoController'>
+    <h1 class="text-center">
       things to do
     </h1>
-    <div class="input-group">
-      <input type="text" name='entry' class="form-control width=100" placeholder="what you want to do..." />
+    <div class=" row  justify-content-center input-group ">
+      <input class="col-md-8 col-sm-6" type="text" ng-model="todoItem.content" class="form-control " placeholder="what you want to do..." />
+
       <span class='input-group-btn'>
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" class="btn btn-primary" ng-click='addTodoItem();'>
           Add
         </button></span>
     </div>
     <br />
     <br>
-    <div class="row">
-      <div class="col-md-6 col-sm-12 ">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-sm-6 ">
         <div class="todolist">
           <br>
-          <button id="checkAll" class="btn btn-success">
-            Mark all as completed
-          </button><br>
+          <button type="button" ng-click="checkAll()" class="btn btn-success">
+            Mark All as completed
+          </button>
+          <span class="float-right">
+            <button type="button" ng-click="clearAll()" class='btn bg-muted'>clear all completed</button>
+          </span>
+          <br>
           <br>
           <ul class="list-group  list-unstyled">
-            <li class="list-group-item ">
-              <label for="firstToDo">
-                <input type="checkbox" name="firstToDo" checked /> Take out trash</label>
+            <li class="list-group-item " ng-repeat="todo in todos  track by $index">
+              <button type="button" ng-click="checkTodo($index)" class="btn btn-outline-primary">✓</button>
+
+              <span ng-if="todo.isComplete"> <del>{{todo.content}}</del></span>
+              <span ng-if="!todo.isComplete"> {{todo.content}}</span>
+
               <span class="btn-group  float-right" role='group'>
-                <button type='button' class="btn btn-secondary">edit</button>
-                <button type='button' class="btn btn-secondary">&times;</button>
-              </span>
-            </li>
-            <li class="list-group-item">
-              <label for="secondToDo">
-                <input type="checkbox" name="secondToDo" /> Play song</label>
-              <span class="btn-group float-right" role='group'>
-                <button type='button' class='btn btn-secondary'>edit</button>
-                <button type='button' class='btn btn-secondary'>&times;</button>
-              </span>
-            </li>
-            <li class="list-group-item">
-              <label for="thirdToDo">
-                <input value="thirdToDo" type="checkbox" /> Cook food</label>
-              <span class="btn-group float-right" role='group'>
-                <button type="button" class='btn btn-secondary'>edit</button>
-                <button type='button' class='btn btn-secondary'>&times;</button>
+                <button type='button' ng-click='editTodoItem($index)' class="btn btn-secondary">edit</button>
+
+                <button type='button' ng-click='removeTodoItem($index)' class="btn btn-secondary">&times;</button>
               </span>
             </li>
           </ul>
         </div>
       </div>
       <br />
-      <div class="col-md-6 col-sm-12">
-        <div class="todolist_done">
-          <br>
-          <button class='btn bg-muted'>clear all completed</button><br><br>
-          <ul class="list-group list-unstyled">
-            <li class="list-group-item">
-              <label for="userBath"><input type="checkbox" name="userBath" /><s> Bathed</s></label>
-              <span class="float-right">
-                <button class='btn btn-secondary'>&times;</button>
-              </span>
-            </li>
-            <li class="list-group-item">
-              <label for="userPlay">
-                <input type="checkbox" name="userPlay" /><s> Played in
-                  snow </s></label>
-              <span class="float-right">
-                <button class='btn btn-secondary'>&times;</button>
-              </span>
-            </li>
-            <li class="list-group-item">
-              <label for="userWatch">
-                <input type="checkbox" name="userWatch" /><s> Watched bollywood
-                  movie</s></label>
-              <span class="float-right">
-                <button class='btn btn-secondary'>&times;</button>
-              </span>
-            </li>
-          </ul>
-        </div>
-      </div>
     </div>
   </div>
+  <script src='app/app.js'></script>
 </body>
 
 </html>
