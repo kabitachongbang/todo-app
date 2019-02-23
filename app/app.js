@@ -1,60 +1,37 @@
 var app = angular.module('todo', []);
-app.controller('TodoController', ['$scope', function ($scope) {
+app.controller('TodoController', ['$scope', 'todoFactory', function ($scope, todoFactory) {
     $scope.todos = [];
     $scope.todoItem = {
         content: ''
     };
     let indexUpdate = 0;
-
     $scope.addTodoItem = function () {
-        console.log($scope.todoItem);
-
         if ($scope.todoItem.id === undefined) {
-
-            let todo = {
-                id: $scope.todos.length,
-                content: $scope.todoItem.content,
-                isComplete: false
-            };
-
-            $scope.todos.push(todo);
+            todoFactory.addTodo($scope.todoItem.content);
         } else {
-            $scope.todos[indexUpdate].content = $scope.todoItem.content;
+            todoFactory.updateTodo(indexUpdate, $scope.todoItem.content);
 
         }
         $scope.todoItem = {};
-
-    };
-    $scope.removeTodoItem = function (index) {
-        $scope.todos.splice(index, 1);
+        $scope.todos = todoFactory.getTodos();
     };
     $scope.editTodoItem = function (index) {
-
-        $scope.todoItem = $scope.todos[index];
+        $scope.todoItem = todoFactory.getTodo(index);
         indexUpdate = index;
     };
-    $scope.checkTodo = function (index) {
-        if ($scope.todos[index].isComplete === true) {
-            $scope.todos[index].isComplete = false;
-            console.log($scope.todos[index].isComplete);
-        } else {
-            $scope.todos[index].isComplete = true;
-            console.log($scope.todos[index].isComplete);
-        }
+    $scope.removeTodoItem = function (index) {
+        todoFactory.deleteTodo(index);
     };
-    $scope.checkAll = function () {
-        for (let count = 0; count < $scope.todos.length; count++) {
-
-
-            $scope.todos[count].isComplete = true;
-
-        };
+    $scope.checkTodoItem = function (index) {
+        todoFactory.checkTodo(index);
+        $scope.todos = todoFactory.getTodos();
     };
-
+    $scope.checkAllItems = function () {
+        todoFactory.checkAll();
+        $scope.todos = todoFactory.getTodos();
+    };
     $scope.clearAll = function () {
-        $scope.todos = [];
+        todoFactory.deleteAll();
+        $scope.todos = todoFactory.getTodos();
     };
-
 }]);
-
-
