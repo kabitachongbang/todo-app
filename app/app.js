@@ -1,10 +1,11 @@
 var app = angular.module('todo', []);
 app.controller('TodoController', ['$scope', 'todoFactory', function ($scope, todoFactory) {
-    $scope.todos = [];
+    $scope.todos = todoFactory.getTodos();
     $scope.todoItem = {
         content: ''
     };
     let indexUpdate = 0;
+
     $scope.addTodoItem = function () {
         if ($scope.todoItem.id === undefined) {
             todoFactory.addTodo($scope.todoItem.content);
@@ -13,8 +14,10 @@ app.controller('TodoController', ['$scope', 'todoFactory', function ($scope, tod
 
         }
         $scope.todoItem = {};
+
         $scope.todos = todoFactory.getTodos();
     };
+
     $scope.editTodoItem = function (index) {
         $scope.todoItem = todoFactory.getTodo(index);
         indexUpdate = index;
