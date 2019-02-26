@@ -1,40 +1,41 @@
 var app = angular.module('todo', []);
-app.controller('TodoController', ['$scope', 'todoFactory', function ($scope, todoFactory) {
-    $scope.todos = todoFactory.getTodos();
-    $scope.todoItem = {
-        content: ''
-    };
-    let indexUpdate = 0;
+app.controller('TodoController', ['$scope', 'todoService', function ($scope, todoService) {
+    $scope.todos = todoService.getItems();
+    $scope.todoItem = { content: '' };
+
+    let updateIndex = 0;
 
     $scope.addTodoItem = function () {
         if ($scope.todoItem.id === undefined) {
-            todoFactory.addTodo($scope.todoItem.content);
-        } else {
-            todoFactory.updateTodo(indexUpdate, $scope.todoItem.content);
-
+            todoService.addItem($scope.todoItem.content);
+            $scope.todos = todoService.getItems();
+            console.log($scope.todos)
+        }
+        else {
+            todoService.updateItem(updateIndex, $scope.todoItem);
         }
         $scope.todoItem = {};
+    };
 
-        $scope.todos = todoFactory.getTodos();
+    $scope.removeTodoItem = function (index) {
+        todoService.deleteItem(index);
+    };
+
+    $scope.clearAll = function () {
+        $scope.todos = todoService.deleteAll();
+
     };
 
     $scope.editTodoItem = function (index) {
-        $scope.todoItem = todoFactory.getTodo(index);
-        indexUpdate = index;
+        $scope.todoItem = $scope.todos[index];
+        updateIndex = index;
     };
-    $scope.removeTodoItem = function (index) {
-        todoFactory.deleteTodo(index);
-    };
+
     $scope.checkTodoItem = function (index) {
-        todoFactory.checkTodo(index);
-        $scope.todos = todoFactory.getTodos();
+        todoService.checkItem(index);
     };
+
     $scope.checkAllItems = function () {
-        todoFactory.checkAll();
-        $scope.todos = todoFactory.getTodos();
-    };
-    $scope.clearAll = function () {
-        todoFactory.deleteAll();
-        $scope.todos = todoFactory.getTodos();
+        todoService.checkALL();
     };
 }]);
