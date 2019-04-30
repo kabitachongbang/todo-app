@@ -1,9 +1,13 @@
-
 .todolist > .list-group > .list-group-item {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: sans-serif;
 }
 .todolist_done > .list-group > .list-group-item {
   background-color: #e8f4e6;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
+body {
+  background-color: rgb(239, 248, 248);
+}
+.todoContent {
+  background-color: rgb(204, 207, 207);
+}

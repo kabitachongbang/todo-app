@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+
+  <body ng-app="todo">
+    <br />
+    <div
+      class="col-md-8 col-sm-6 todoContent container  mt-5 rounded"
+      ng-controller="TodoController"
+    >
+      <h1 class="text-center text-info">
+        things to do
+      </h1>
+      <div class="row justify-content-center input-group ">
+        <input
+          class="col-md-6 col-sm-4 rounded "
+          type="text"
+          ng-model="todoItem.content"
+          placeholder="what you want to do..."
+        />
+
+        <span class="input-group-btn">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            ng-click="addTodoItem()"
+            ;
+          >
+            Add
+          </button></span
+        >
+      </div>
+      <div class="row justify-content-center ">
+        <div class="col-md-8 col-sm-6 ">
+          <div class="todolist">
+            <br />
+            <div class="clearfix">
+              <button
+                type="button"
+                ng-click="checkAllItems(todos)"
+                class="btn btn-success float-left"
+              >
+                Mark All as completed
+              </button>
+              <button
+                type="button"
+                ng-click="deleteAllTodos()"
+                class="btn bg-danger text-white float-right"
+              >
+                clear all completed
+              </button>
+            </div>
+
+            <br />
+            <br />
+            <ul class="list-group  list-unstyled">
+              <li
+                class="list-group-item "
+                ng-repeat="todo in todos track by $index"
+              >
+                <button
+                  type="button"
+                  ng-click="checkTodoItem($index)"
+                  class="btn btn-outline-primary"
+                >
+                  ✓
+                </button>
+
+                <span ng-if="todo.isComplete">
+                  <del>{{ todo.content }}</del></span
+                >
+                <span ng-if="!todo.isComplete"> {{ todo.content }}</span>
+
+                <span class="btn-group  float-right" role="group">
+                  <button
+                    type="button"
+                    ng-click="editTodoItem(todo)"
+                    class="btn btn-secondary"
+                  >
+                    edit
+                  </button>
+
+                  <button
+                    type="button"
+                    ng-click="removeTodoItem(todo._id)"
+                    class="btn btn-secondary"
+                  >
+                    &times;
+                  </button>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <br />
+      </div>
+      <br />
+    </div>
+
+    <script src="app/todoController.js"></script>
+    <script src="app/todofactory.js"></script>
+  </body>
+</html>
