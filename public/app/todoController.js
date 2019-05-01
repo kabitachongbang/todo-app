@@ -30,10 +30,15 @@ function TodoController($scope, todoService) {
     });
   };
 
-  $scope.deleteAllTodos = function() {
-    $scope.todos = todoService
-      .deleteAllItems()
-      .then(function(successResult) {});
+  $scope.deleteAllTodos = function(todosList) {
+    todosList.forEach(function(item) {
+      if (item.isComplete) {
+        console.log("to be deleted ", item.isComplete);
+        $scope.todos = todoService
+          .deleteAllItems()
+          .then(function(successResult) {});
+      }
+    });
   };
 
   $scope.editTodoItem = function(newItem) {
