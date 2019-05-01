@@ -1,5 +1,6 @@
 angular.module("todo").factory("todoService", function($http) {
-  let myUrl = "http://localhost:3000/api/formData/";
+  //let myUrl = "http://localhost:3000/api/formData/";
+  let myUrl = "https://kabita-todo.herokuapp.com/api/formData/";
   let getItems = function() {
     return $http({
       url: myUrl,
