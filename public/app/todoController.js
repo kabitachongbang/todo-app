@@ -44,7 +44,7 @@ function TodoController($scope, todoService) {
     let uncheckedIDsList = [];
     console.log("all todos", todosList);
     todosList.forEach(function(item) {
-      if (item.isComplete === false) {
+      if (!item.isComplete) {
         uncheckedIDsList.push(item._id);
       }
     });
