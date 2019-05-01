@@ -45,14 +45,9 @@ router.put("/completeAll", function(req, res) {
 });
 
 router.delete("/", function(req, res) {
-  const checkedListStrings = req.body;
-  const checkedTodoIds = checkedListStrings.map(item => ObjectId(item));
-  console.log("checkedTodos", checkedTodoIds);
-
   collection.deleteMany({ isComplete: true }, function(err, result) {
     res.send(result);
   });
-  res.send(req.body);
 });
 
 router.put("/:id", function(req, res) {
