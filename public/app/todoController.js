@@ -9,21 +9,22 @@ function TodoController($scope, todoService) {
   loadData();
 
   $scope.addTodoItem = function() {
-    if (
-      ($scope.todoItem._id === undefined || $scope.todoItem._id === null) &&
-      $scope.todoItem
-    ) {
-      todoService.addItem($scope.todoItem).then(function(result) {
-        loadData();
-        clearItem();
-      });
-    } else {
-      todoService
-        .updateItem($scope.todoItem._id, $scope.todoItem)
-        .then(function(result) {
+    if ($scope.todoItem.content) {
+      if ($scope.todoItem._id === undefined || $scope.todoItem._id === null) {
+        todoService.addItem($scope.todoItem).then(function(result) {
           loadData();
           clearItem();
         });
+      } else {
+        todoService
+          .updateItem($scope.todoItem._id, $scope.todoItem)
+          .then(function(result) {
+            loadData();
+            clearItem();
+          });
+      }
+    } else {
+      return;
     }
   };
 
