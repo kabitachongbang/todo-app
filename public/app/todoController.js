@@ -50,7 +50,7 @@ function TodoController($scope, todoService) {
     });
 
     todoService.checkAllItems(uncheckedIDsList).then(function(successResult) {
-      console.log("all todo list checked? ", successResult);
+      console.log("update all todo list status? ", successResult);
       loadData();
       clearItem();
     });
@@ -62,7 +62,7 @@ function TodoController($scope, todoService) {
     todoService
       .checkItem(itemID, $scope.todos[index])
       .then(function(successResult) {
-        console.log("todo item checked? ", successResult);
+        console.log("update todo item status ", successResult);
         loadData();
         clearItem();
       });
