@@ -30,16 +30,8 @@ function TodoController($scope, todoService) {
     });
   };
 
-  $scope.deleteAllTodos = function(todosList) {
-    let checkedIDsList = [];
-    todosList.forEach(function(item) {
-      if (item.isComplete) {
-        checkedIDsList.push(item._id);
-        console.log("to be deleted list", checkedIDsList);
-      }
-    });
-
-    todoService.deleteAllItems(checkedIDsList).then(function(successResult) {
+  $scope.deleteAllTodos = function() {
+    todoService.deleteAllItems().then(function(successResult) {
       loadData();
       console.log("deleted all marked list status? ", successResult);
     });
