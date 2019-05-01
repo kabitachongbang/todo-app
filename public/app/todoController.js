@@ -34,9 +34,10 @@ function TodoController($scope, todoService) {
     todosList.forEach(function(item) {
       if (item.isComplete) {
         console.log("to be deleted ", item.isComplete);
-        $scope.todos = todoService
+        /*  $scope.todos = todoService
           .deleteAllItems()
           .then(function(successResult) {});
+       */
       }
     });
   };
