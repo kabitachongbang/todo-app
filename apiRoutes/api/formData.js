@@ -68,14 +68,15 @@ router.post("/", function(req, res) {
   });
 });
 
-router.delete("/:id", function(req, res) {
-  collection.deleteOne({ _id: ObjectId(req.params.id) }, function(err, result) {
+router.delete("/deleteAll", function(req, res) {
+  //const checkedList
+  collection.deleteMany({}, function(err, result) {
     res.send(result);
   });
 });
 
-router.delete("/", function(req, res) {
-  collection.deleteMany({}, function(err, result) {
+router.delete("/:id", function(req, res) {
+  collection.deleteOne({ _id: ObjectId(req.params.id) }, function(err, result) {
     res.send(result);
   });
 });

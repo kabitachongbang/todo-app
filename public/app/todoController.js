@@ -31,15 +31,17 @@ function TodoController($scope, todoService) {
   };
 
   $scope.deleteAllTodos = function(todosList) {
+    let checkedIDsList = [];
     todosList.forEach(function(item) {
       if (item.isComplete) {
-        console.log("to be deleted ", item.isComplete);
-        /*  $scope.todos = todoService
-          .deleteAllItems()
-          .then(function(successResult) {});
-       */
+        checkedIDsList.push(item._id);
+        console.log("to be deleted list", checkedIDsList);
       }
     });
+
+    /*  $scope.todos = todoService
+      .deleteAllItems(checkedIDsList)
+      .then(function(successResult) {}); */
   };
 
   $scope.editTodoItem = function(newItem) {

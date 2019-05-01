@@ -1,6 +1,6 @@
 angular.module("todo").factory("todoService", function($http) {
-  //let myUrl = "http://localhost:3000/api/formData/";
-  let myUrl = "https://kabita-todo.herokuapp.com/api/formData/";
+  let myUrl = "http://localhost:3000/api/formData/";
+  //let myUrl = "https://kabita-todo.herokuapp.com/api/formData/";
   let getItems = function() {
     return $http({
       url: myUrl,
@@ -58,16 +58,17 @@ angular.module("todo").factory("todoService", function($http) {
     );
   };
 
-  let deleteAllItems = function() {
+  let deleteAllItems = function(newItem) {
     return $http({
-      url: myUrl,
-      method: "DELETE"
+      url: myUrl + "deleteAll",
+      method: "DELETE",
+      data: newItem
     }).then(
       function(successResult) {
-        return successResult;
+        return successResult.statusText;
       },
       function(failedResult) {
-        return failedResult;
+        return failedResult.statusText;
       }
     );
   };
