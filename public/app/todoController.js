@@ -39,9 +39,10 @@ function TodoController($scope, todoService) {
       }
     });
 
-    /*  $scope.todos = todoService
-      .deleteAllItems(checkedIDsList)
-      .then(function(successResult) {}); */
+    todoService.deleteAllItems(checkedIDsList).then(function(successResult) {
+      loadData();
+      console.log("deleted all marked list status? ", successResult);
+    });
   };
 
   $scope.editTodoItem = function(newItem) {

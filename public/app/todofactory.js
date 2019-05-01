@@ -60,7 +60,7 @@ angular.module("todo").factory("todoService", function($http) {
 
   let deleteAllItems = function(newItem) {
     return $http({
-      url: myUrl + "deleteAll",
+      url: myUrl,
       method: "DELETE",
       data: newItem
     }).then(
