@@ -9,7 +9,10 @@ function TodoController($scope, todoService) {
   loadData();
 
   $scope.addTodoItem = function() {
-    if ($scope.todoItem._id === undefined || $scope.todoItem._id === null) {
+    if (
+      ($scope.todoItem._id === undefined || $scope.todoItem._id === null) &&
+      $scope.todoItem
+    ) {
       todoService.addItem($scope.todoItem).then(function(result) {
         loadData();
         clearItem();
