@@ -75,13 +75,13 @@ angular.module("todo").factory("todoService", function($http) {
     return $http({
       method: "PUT",
       url: myUrl + "completeAll",
-      data: JSON.stringify(newItem)
+      data: newItem
     }).then(
       function(successResult) {
-        return successResult;
+        return successResult.statusText;
       },
       function(failedResult) {
-        return failedResult;
+        return failedResult.statusText;
       }
     );
   };
@@ -93,10 +93,10 @@ angular.module("todo").factory("todoService", function($http) {
       data: newItem
     }).then(
       function(successResult) {
-        return successResult;
+        return successResult.statusText;
       },
       function(failedResult) {
-        return failedResult;
+        return failedResult.statusText;
       }
     );
   };
