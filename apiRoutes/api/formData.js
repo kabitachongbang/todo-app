@@ -13,14 +13,6 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, client) {
   collection = db.collection("todos");
 });
 
-// router.use(function(req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Origin, X-Requested-With, Content-Type, Accept"
-//   );
-//   next();
-// });
 router.get("/", function(req, res) {
   collection.find({}).toArray(function(err, result) {
     if (err) throw err;
@@ -38,6 +30,7 @@ router.get("/:id", function(req, res) {
 
 router.put("/completeAll", function(req, res) {
   const uncheckedIdListStrings = req.body;
+  console.log("string form of list is ", uncheckedIdListStrings);
   const uncheckedTodoIds = uncheckedIdListStrings.map(item => ObjectId(item));
   console.log("uncheckedTodoIds", uncheckedTodoIds);
 
@@ -54,14 +47,13 @@ router.put("/completeAll", function(req, res) {
 router.put("/:id", function(req, res) {
   let newContent = req.body.content;
   let newBool = req.body.isComplete;
-  console.log("server side", newContent);
-  console.log("check value", newBool);
+  console.log("to be checked item ", newContent);
+  console.log("after checked ", newBool);
 
-  collection.update(
+  collection.updateOne(
     { _id: ObjectId(req.params.id) },
     { $set: { content: newContent, isComplete: newBool } },
     function(err, result) {
-      console.log("error", err);
       res.send(result);
     }
   );
